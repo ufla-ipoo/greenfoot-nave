@@ -14,8 +14,8 @@ public class Nave extends Actor
     private int tempoDesdeUltimoTiro;
     
     public Nave() {
-        velocidade = 7;
-        tempoRecargaTiro = 20;
+        velocidade = 4;
+        tempoRecargaTiro = 25;
         tempoDesdeUltimoTiro = tempoRecargaTiro;
         inicializar();
     }

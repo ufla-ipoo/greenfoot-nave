@@ -13,6 +13,7 @@ public class Inimigo extends Actor
     private boolean movendoPraCima;
     private int posXFixo;
     private int posYAlvo;
+    private int tempoNovoTiro = 60;
     private int tempoParaRessuscitar;
     private int tempoDesdeInimigoMorreu;
     
@@ -89,7 +90,7 @@ public class Inimigo extends Actor
         
         // define aleatoriamente se o inimigo irá atirar
         // atirar com a probabilidade de 1 em 15
-        if (Greenfoot.getRandomNumber(40) < 1)
+        if (Greenfoot.getRandomNumber(tempoNovoTiro) < 1)
         {
             atirar();
         }
