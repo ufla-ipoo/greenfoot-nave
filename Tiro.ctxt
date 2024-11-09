@@ -1,13 +1,16 @@
 #BlueJ class context
 comment0.target=Tiro
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Tiro\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=tiroDoInimigo
+comment0.text=\r\n\ Objeto\ que\ representa\ os\ tiros\ tanto\ da\ nave\ do\ jogador\r\n\ quanto\ da\ nave\ inimiga\r\n\ \r\n\ @author\ Julio\ C\u00E9sar\ Alves\r\n\ @version\ 2024.11.09\r\n
+comment1.params=tiroEhDoInimigo
 comment1.target=Tiro(boolean)
+comment1.text=\r\n\ Construtor\ para\ objetos\ tiro\r\n\ \r\n\ @param\ tiroEhDoInimigo\ indica\ se\ o\ tiro\ que\ est\u00E1\ sendo\ criado\ \u00E9\ do\ inimigo\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (caso\ contr\u00E1rio,\ \u00E9\ da\ nave\ do\ jogador)\r\n
 comment2.params=
 comment2.target=void\ mover()
+comment2.text=\r\n\ Trata\ a\ movimenta\u00E7\u00E3o\ do\ tiro.\r\n\ -\ Se\ for\ da\ nave\ inimiga\ se\ move\ para\ a\ esquerda.\r\n\ -\ Se\ for\ da\ nave\ do\ jogador,\ se\ move\ para\ a\ direita.\r\n
 comment3.params=
 comment3.target=boolean\ verificarColisao()
+comment3.text=\r\n\ Verifica\ se\ o\ tiro\ acertou\ o\ alvo\r\n
 comment4.params=
 comment4.target=void\ act()
-comment4.text=\r\n\ Act\ -\ do\ whatever\ the\ Tiro\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment4.text=\r\n\ M\u00E9todo\ que\ trata\ o\ que\ o\ tiro\ faz\ a\ cada\ itera\u00E7\u00E3o\ do\ jogo\r\n
 numComments=5

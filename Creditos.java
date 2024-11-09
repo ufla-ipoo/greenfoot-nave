@@ -1,23 +1,26 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Creditos here.
+ * Representa o texto de créditos que fica aparecendo no jogo
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Julio César Alves
+ * @version 2024.11.09
  */
 public class Creditos extends Actor
 {
+    /**
+     * Construtor para objetos Credito
+     */
     public Creditos() {
-        setImage(new GreenfootImage("GAC125 (IPOO) - DAC-ICET-UFLA", 15, Color.GRAY, Color.BLACK));
+        // define uma image para representar os créditos do jogo
+        setImage(new GreenfootImage("GAC125 (IPOO) - DAC-ICET-UFLA (v 1.1)", 15, Color.GRAY, Color.BLACK));
     }
     
     /**
-     * Act - do whatever the Creditos wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Os creditos não fazem nada a cada iteração do jogo
      */
     public void act()
     {
-        // Add your action code here.
+        // nada a fazer
     }
 }

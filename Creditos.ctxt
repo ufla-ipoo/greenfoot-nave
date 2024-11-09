@@ -1,9 +1,10 @@
 #BlueJ class context
 comment0.target=Creditos
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Creditos\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Representa\ o\ texto\ de\ cr\u00E9ditos\ que\ fica\ aparecendo\ no\ jogo\r\n\ \r\n\ @author\ Julio\ C\u00E9sar\ Alves\r\n\ @version\ 2024.11.09\r\n
 comment1.params=
 comment1.target=Creditos()
+comment1.text=\r\n\ Construtor\ para\ objetos\ Credito\r\n
 comment2.params=
 comment2.target=void\ act()
-comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ Creditos\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment2.text=\r\n\ Os\ creditos\ n\u00E3o\ fazem\ nada\ a\ cada\ itera\u00E7\u00E3o\ do\ jogo\r\n
 numComments=3

@@ -1,41 +1,74 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Inimigo here.
+ * Classe que representa a nave inimiga no jogo
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Julio César Alves
+ * @version 2024.11.09
  */
 public class Inimigo extends Actor
 {
+    // velocidade da nave
     private int velocidade;
+    // indica se a nave está viva ou não
     private boolean estaVivo;
+    // indica se a nave está se movendo para cima
+    // (caso contrário, move-se pra baixo)
     private boolean movendoPraCima;
+    // indica a posição X fixa da nave (ela se move
+    // apenas na vertical)
     private int posXFixo;
+    // indica para qual posição Y a nave está se
+    // movendo no momento
     private int posYAlvo;
-    private int tempoNovoTiro = 60;
+    // indica de quanto em quanto "tempo" a nave pode
+    // atirar
+    // obs: o tempo na verdade é a quantidade de vezes
+    //      que o método act é chamado
+    private int tempoNovoTiro;
+    // indica quanto "tempo" demora para a nave ressuscitar
+    // depois que ela morre
     private int tempoParaRessuscitar;
-    private int tempoDesdeInimigoMorreu;
+    // conta quanto "tempo" se passou desde que a nave morreu
+    private int tempoDesdeQueMorreu;
+    // referência para o placar para contar os pontos quando 
+    // o inimigo morre
+    private Placar placar;
     
-    public Inimigo()
+    public Inimigo(Placar placar)
     {
+        // inicializa os atributos que possuem valores constantes
+        velocidade = 5;
         posXFixo = 750;
+        tempoNovoTiro = 60;
         tempoParaRessuscitar = 80;
-        tempoDesdeInimigoMorreu = 0;
+        
+        // a nave ainda não morreu :)
+        tempoDesdeQueMorreu = 0;
+        
+        // guarda a referência para o placar
+        this.placar = placar;
+        
         // reinicia as característas da nave
         inicializar();
     }
     
+    /**
+     * Inicializa a nave para começar de novo
+     */
     private void inicializar()
     {
-        // define a posicao X fixa e o valor maximo de posicao Y.
-        posYAlvo = Greenfoot.getRandomNumber(600);
+        // reseta a imagem da nave
         setImage(new GreenfootImage("inimigo.png"));
+        // coloca a nave na posicao X fixa e sorteia o valor
+        // da coordenada Y para onde nave vai se mover (e
+        // já começa nessa posição)
+        posYAlvo = Greenfoot.getRandomNumber(600);        
         setLocation(posXFixo, posYAlvo);
 
-        velocidade = 5;
-        
+        // indica que a nave está viva
         estaVivo = true;
+        // começa se movendo pra cima
         movendoPraCima = false;                        
     }
     
@@ -55,33 +88,39 @@ public class Inimigo extends Actor
         setLocation(getX(), getY()+velocidade);
     }
     
+    /**
+     * Faz a nave atirar
+     */
     public void atirar()
     {
+        // cria um objeto tiro e o adiciona no mundo na
+        // mesma posição onde está a nave
         Tiro tiro = new Tiro(true);
         getWorld().addObject(tiro, getX(), getY());
     }
     
     /**
-     * Trata quando a nave do jogador toma um tiro, se ela estiver viva
+     * Trata quando a nave do jogador toma um tiro
      */
     public void tomarTiro()
     {
+        // Se a nave estiver viva
         if (estaVivo)
         {
-            // morre
+            // ela morre
             estaVivo = false;
+            // aparece uma imagem de explosão e é tocado som de explosão
             Greenfoot.playSound("explosao.wav");
             setImage(new GreenfootImage("explosao.png"));
-            tempoDesdeInimigoMorreu = 0;
-            Espaco espaco = (Espaco) getWorld();
-            espaco.contabilizarMorteInimigo();
+            // reinicializa o tempo desde que a nave morreu
+            tempoDesdeQueMorreu = 0;
+            // contabiliza a morte do inimigo no jogo
+            placar.contarMorteInimigo();
         }
     }
     
     /**
      * Executa a Inteligência Artificial do inimigo, tratando seus movimentos e tiros
-     * 
-     * @return retorna o tiro dado pelo inimigo (se ele tiver dado um), caso contrario retorna null
      */
     public void executarIA()
     {
@@ -89,7 +128,7 @@ public class Inimigo extends Actor
         movimentar();
         
         // define aleatoriamente se o inimigo irá atirar
-        // atirar com a probabilidade de 1 em 15
+        // com a probabilidade de 1 em 15
         if (Greenfoot.getRandomNumber(tempoNovoTiro) < 1)
         {
             atirar();
@@ -113,7 +152,8 @@ public class Inimigo extends Actor
             // continua se movendo pra baixo
             moverBaixo();
         }
-        // se a nave esta se movendo pra cima e passou da posicao alvo, ou movendo pra baixo e tambem passou da posição alvo
+        // se a nave esta se movendo pra cima e passou da posicao alvo, 
+        // ou movendo pra baixo e tambem passou da posição alvo
         else if ((movendoPraCima && (getY() <= posYAlvo)) || (!movendoPraCima && (getY() >= posYAlvo)))
         {
             // sorteia uma nova posicao alvo
@@ -126,18 +166,20 @@ public class Inimigo extends Actor
     
     
     /**
-     * Act - do whatever the Inimigo wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Método que trata o que nave faz a cada iteração do jogo.
      */
     public void act()
     {
+        // se a nave estiver viva, executa a IA da nave
         if (estaVivo) {
             executarIA();
         }
         else {
-            tempoDesdeInimigoMorreu++;
+            // se a nave estiver morta, contabiliza o tempo desde que morreu
+            tempoDesdeQueMorreu++;
             
-            if (tempoDesdeInimigoMorreu >= tempoParaRessuscitar) {
+            // e ressuscita a nave se chegou a hora de ressuscitar
+            if (tempoDesdeQueMorreu >= tempoParaRessuscitar) {
                 inicializar();
             }
         }

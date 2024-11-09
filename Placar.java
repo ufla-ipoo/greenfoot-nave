@@ -1,43 +1,65 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Placar here.
+ * Representa o placar do jogo
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Julio César Alves
+ * @version 2024.11.09
  */
 public class Placar extends Actor
 {
-    // pontos atuais do placar
-    private int pontos;
+    // pontuação atual do placar
+    private int pontuacao;
     
     // pontos ganhos a cada inimigo morto
-    private int pontoPorInimigo = 50;
+    private int pontoPorInimigo;
     
-    
+    /**
+     * Construtor para objetos placar
+     */
     public Placar() {
+        // define quantos pontos ganhar por inimigo morto
+        pontoPorInimigo = 50;
+        // posiciona o placar no mundo
         setLocation(20,20);
+        // reinicia o placar
         inicializar();
     }
     
+    /**
+     * Reinicializa o placar
+     */
     public void inicializar()
     {        
-        pontos = 0;
-        setImage(new GreenfootImage("Placar: " + pontos, 20, Color.YELLOW, Color.BLACK));
-    }
-    
-    public void contarMorteInimigo()
-    {
-        pontos += pontoPorInimigo;
-        setImage(new GreenfootImage("Placar: " + pontos, 20, Color.YELLOW, Color.BLACK));
+        // Reinicializa a pontuação
+        pontuacao = 0;
+        // Redefine a imagem do placar usando a pontuação atual
+        redefinirImagem();
     }
     
     /**
-     * Act - do whatever the Placar wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Contabiliza pontos por ter derrotado um inimigo
+     */
+    public void contarMorteInimigo()
+    {
+        // atualiza a pontuação
+        pontuacao += pontoPorInimigo;
+        // Redefine a imagem do placar usando a pontuação atual
+        redefinirImagem();
+    }
+    
+    /**
+     * Atualiza a imagem do placar de acordo com a pontuação atual
+     */
+    private void redefinirImagem() {
+       setImage(new GreenfootImage("Placar: " + pontuacao, 20, Color.YELLOW, Color.BLACK)); 
+    }
+    
+    /**
+     * O placar não faz nada a cada iteração do jogo
      */
     public void act()
     {
-        // Add your action code here.
+        // nada a fazer
     }
 }

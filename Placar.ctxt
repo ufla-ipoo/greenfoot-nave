@@ -1,13 +1,19 @@
 #BlueJ class context
 comment0.target=Placar
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Placar\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Representa\ o\ placar\ do\ jogo\r\n\ \r\n\ @author\ Julio\ C\u00E9sar\ Alves\r\n\ @version\ 2024.11.09\r\n
 comment1.params=
 comment1.target=Placar()
+comment1.text=\r\n\ Construtor\ para\ objetos\ placar\r\n
 comment2.params=
 comment2.target=void\ inicializar()
+comment2.text=\r\n\ Reinicializa\ o\ placar\r\n
 comment3.params=
 comment3.target=void\ contarMorteInimigo()
+comment3.text=\r\n\ Contabiliza\ pontos\ por\ ter\ derrotado\ um\ inimigo\r\n
 comment4.params=
-comment4.target=void\ act()
-comment4.text=\r\n\ Act\ -\ do\ whatever\ the\ Placar\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
-numComments=5
+comment4.target=void\ redefinirImagem()
+comment4.text=\r\n\ Atualiza\ a\ imagem\ do\ placar\ de\ acordo\ com\ a\ pontua\u00E7\u00E3o\ atual\r\n
+comment5.params=
+comment5.target=void\ act()
+comment5.text=\r\n\ O\ placar\ n\u00E3o\ faz\ nada\ a\ cada\ itera\u00E7\u00E3o\ do\ jogo\r\n
+numComments=6
